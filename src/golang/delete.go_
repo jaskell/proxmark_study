@@ -1,0 +1,73 @@
+
+
+func assert_recover_feedback(t *testing.T, value int64, okret bit, err string) {
+  if recover_feedback(value) != okret {
+    t.Error(err)
+  }
+}
+
+func Test_recover_feedback(t *testing.T) {
+  assert_recover_feedback(t, 0xFFFFFFFFFFFF, 0, 0x7FFFFFFFFFFF, "recover_feedback 00 test failed!")
+  assert_recover_feedback(t, 0x7FFFFFFFFFFF, 1, 0xBFFFFFFFFFFF, "recover_feedback 01 test failed!")
+  assert_recover_feedback(t, 0xBFFFFFFFFFFF, 1, 0xDFFFFFFFFFFF, "recover_feedback 02 test failed!")
+  assert_recover_feedback(t, 0xDFFFFFFFFFFF, 1, 0xEFFFFFFFFFFF, "recover_feedback 03 test failed!")
+  assert_recover_feedback(t, 0xEFFFFFFFFFFF, 1, 0xF7FFFFFFFFFF, "recover_feedback 04 test failed!")
+  assert_recover_feedback(t, 0xF7FFFFFFFFFF, 0, 0xFBFFFFFFFFFF, "recover_feedback 05 test failed!")
+  assert_recover_feedback(t, 0xFBFFFFFFFFFF, 0, 0xFDFFFFFFFFFF, "recover_feedback 06 test failed!")
+  assert_recover_feedback(t, 0xFDFFFFFFFFFF, 0, 0xFEFFFFFFFFFF, "recover_feedback 07 test failed!")
+  assert_recover_feedback(t, 0xFEFFFFFFFFFF, 1, 0xFF7FFFFFFFFF, "recover_feedback 08 test failed!")
+  assert_recover_feedback(t, 0xFF7FFFFFFFFF, 0, 0xFFBFFFFFFFFF, "recover_feedback 09 test failed!")
+  assert_recover_feedback(t, 0xFFBFFFFFFFFF, 1, 0xFFDFFFFFFFFF, "recover_feedback 10 test failed!")
+  assert_recover_feedback(t, 0xFFDFFFFFFFFF, 1, 0xFFEFFFFFFFFF, "recover_feedback 11 test failed!")
+  assert_recover_feedback(t, 0xFFEFFFFFFFFF, 1, 0xFFF7FFFFFFFF, "recover_feedback 12 test failed!")
+  assert_recover_feedback(t, 0xFFF7FFFFFFFF, 1, 0x7FFBFFFFFFFF, "recover_feedback 13 test failed!")
+  assert_recover_feedback(t, 0x7FFBFFFFFFFF, 1, 0xBFFDFFFFFFFF, "recover_feedback 14 test failed!")
+  assert_recover_feedback(t, 0xBFFDFFFFFFFF, 1, 0xDFFEFFFFFFFF, "recover_feedback 15 test failed!")
+  assert_recover_feedback(t, 0xDFFEFFFFFFFF, 1, 0xEFFF7FFFFFFF, "recover_feedback 16 test failed!")
+  assert_recover_feedback(t, 0xEFFF7FFFFFFF, 0, 0x77FFBFFFFFFF, "recover_feedback 17 test failed!")
+  assert_recover_feedback(t, 0x77FFBFFFFFFF, 1, 0x3BFFDFFFFFFF, "recover_feedback 18 test failed!")
+  assert_recover_feedback(t, 0x3BFFDFFFFFFF, 1, 0x9DFFEFFFFFFF, "recover_feedback 19 test failed!")
+  assert_recover_feedback(t, 0x9DFFEFFFFFFF, 0, 0xCEFFF7FFFFFF, "recover_feedback 20 test failed!")
+  assert_recover_feedback(t, 0xCEFFF7FFFFFF, 0, 0xE77FFBFFFFFF, "recover_feedback 21 test failed!")
+  assert_recover_feedback(t, 0xE77FFBFFFFFF, 0, 0x73BFFDFFFFFF, "recover_feedback 22 test failed!")
+  assert_recover_feedback(t, 0x73BFFDFFFFFF, 1, 0x39DFFEFFFFFF, "recover_feedback 23 test failed!")
+  assert_recover_feedback(t, 0x39DFFEFFFFFF, 0, 0x9CEFFF7FFFFF, "recover_feedback 24 test failed!")
+  assert_recover_feedback(t, 0x9CEFFF7FFFFF, 1, 0x4E77FFBFFFFF, "recover_feedback 25 test failed!")
+  assert_recover_feedback(t, 0x4E77FFBFFFFF, 1, 0xA73BFFDFFFFF, "recover_feedback 26 test failed!")
+  assert_recover_feedback(t, 0xA73BFFDFFFFF, 1, 0xD39DFFEFFFFF, "recover_feedback 27 test failed!")
+  assert_recover_feedback(t, 0xD39DFFEFFFFF, 1, 0xE9CEFFF7FFFF, "recover_feedback 28 test failed!")
+  assert_recover_feedback(t, 0xE9CEFFF7FFFF, 0, 0xF4E77FFBFFFF, "recover_feedback 29 test failed!")
+  assert_recover_feedback(t, 0xF4E77FFBFFFF, 1, 0x7A73BFFDFFFF, "recover_feedback 30 test failed!")
+  assert_recover_feedback(t, 0x7A73BFFDFFFF, 0, 0x3D39DFFEFFFF, "recover_feedback 31 test failed!")
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+func lf20(s int64) {
+	const f2_f4b = 0x9E98
+	const f2_f4a = 0xB48E
+	const f2_f5c = 0xEC57E80A  
+	i5 := ((f2_f4a >> i4bit(s,  9, 11, 13, 15)) & 1) << 0
+	i5 |= ((f2_f4b >> i4bit(s, 17, 19, 21, 23)) & 1) << 1
+	i5 |= ((f2_f4b >> i4bit(s, 25, 27, 29, 31)) & 1) << 2
+	i5 |= ((f2_f4a >> i4bit(s, 33, 35, 37, 39)) & 1) << 3
+	i5 |= ((f2_f4b >> i4bit(s, 41, 43, 45, 47)) & 1) << 4
+	return (f2_f5c >> i5) & 1
+}
+
+
+
+
